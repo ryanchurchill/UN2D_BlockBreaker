@@ -44,6 +44,7 @@ public class Ball : MonoBehaviour
         {
             hasStarted = true;
             GetComponent<Rigidbody2D>().velocity = new Vector2(xPush, yPush);
+            //TODO: turn off ticking?
         }
     }
 }
