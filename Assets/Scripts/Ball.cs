@@ -57,6 +57,7 @@ public class Ball : MonoBehaviour
     {
         if (hasStarted && ballSounds.Length > 0)
         {
+            // TODO: trim the beginning of these sounds
             myAudioSource.PlayOneShot(ballSounds[UnityEngine.Random.Range(0, ballSounds.Length)]);
         }
     }
