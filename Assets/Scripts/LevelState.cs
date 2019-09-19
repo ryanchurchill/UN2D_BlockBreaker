@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelState : MonoBehaviour
 {
-    [SerializeField] // for debugging
-    int remainingBlockCount = 0;
+    // objects for designer to set
+    [SerializeField] TextMeshProUGUI scoreText;
+
+    // state
+    
+    // serialized for debugging
+    [SerializeField] int remainingBlockCount = 0;
+
+
+    int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         CountBlocks();
+        setScore(score); // so scoreText updates
     }
 
     // Update is called once per frame
@@ -28,9 +38,16 @@ public class LevelState : MonoBehaviour
     public void onBlockDestroy()
     {
         remainingBlockCount--;
+        setScore(score + 1);
         if (remainingBlockCount == 0)
         {
             FindObjectOfType<SceneLoader>().LoadNextScene();
         }
+    }
+
+    private void setScore(int newScore)
+    {
+        score = newScore;
+        scoreText.text = score.ToString();
     }
 }
