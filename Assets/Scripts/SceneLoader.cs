@@ -13,6 +13,15 @@ public class SceneLoader : MonoBehaviour {
 
     public void LoadStartScene()
     {
+        // reset game state
+        GameState gameState = FindObjectOfType<GameState>();
+        if (gameState != null)
+        {
+            Debug.Log("hello");
+            // better to call public method on gameState that destroys itself?
+            Destroy(gameState.gameObject);
+        }
+
         SceneManager.LoadScene(0);
     }
 

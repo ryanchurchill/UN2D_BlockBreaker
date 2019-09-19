@@ -15,16 +15,16 @@ public class GameState : MonoBehaviour
     private void Awake()
     {
         int levelStateCount = FindObjectsOfType<LevelState>().Length;
-        if (levelStateCount > 1)
-        {
-            gameObject.SetActive(false); // bug fix from Rick, still sketchy. There's got to be a better way to implement a singleton..
-            // destroy self
-            Destroy(gameObject);
-        }
-        else
-        {
+        //if (levelStateCount > 1)
+        //{
+        //    gameObject.SetActive(false); // bug fix from Rick, still sketchy. There's got to be a better way to implement a singleton..
+        //    // destroy self
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
             DontDestroyOnLoad(gameObject);
-        }
+        //}
     }
 
     // Start is called before the first frame update
@@ -49,4 +49,9 @@ public class GameState : MonoBehaviour
     {
         setScore(score + 1);
     }
+
+    //public void resetGame()
+    //{
+    //    Destroy(gameObject);
+    //}
 }
