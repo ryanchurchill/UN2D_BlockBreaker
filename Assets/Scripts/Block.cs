@@ -6,10 +6,11 @@ public class Block : MonoBehaviour
 {
     [SerializeField] AudioClip breakSound;
     [SerializeField] LevelState levelState;
+    [SerializeField] GameObject blockSparklesVFX;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        destroyBlock();
+        DestroyBlock();
     }
 
     private void Start()
@@ -17,8 +18,9 @@ public class Block : MonoBehaviour
 
     }
 
-    private void destroyBlock()
+    private void DestroyBlock()
     {
+        TriggerParticlesVFX();
         if (breakSound != null)
         {
             // Udemy uses Camera.main.transform.position
@@ -27,5 +29,11 @@ public class Block : MonoBehaviour
         }
         FindObjectOfType<LevelState>().onBlockDestroy();
         Destroy(gameObject);
+    }
+
+    private void TriggerParticlesVFX()
+    {
+        GameObject sparkles = Instantiate(blockSparklesVFX, transform.position, transform.rotation);
+        Destroy(sparkles, 2f);
     }
 }
