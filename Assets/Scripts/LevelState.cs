@@ -29,7 +29,7 @@ public class LevelState : MonoBehaviour
 
     void CountBlocks()
     {
-        remainingBlockCount = FindObjectsOfType<Block>().Length;
+        remainingBlockCount = GameObject.FindGameObjectsWithTag("Breakable").Length;
     }
 
     // Not a true event, we just call this from block, that's why it's public
